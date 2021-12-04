@@ -27,43 +27,91 @@ function currentTime() {
     document.getElementById("clockM").innerText = timeM; 
     document.getElementById("clockS").innerText = timeS; 
     document.getElementById("clockA").innerText = timeA; 
-    let t = setTimeout(function(){ currentTime() }, 1000);
 
 
 
 
 }   
+setInterval(currentTime, 1000);
   
-  currentTime();
+  
 
+function MakeDiv() {
+    var newDate = new Date();
+    var hour = newDate.getHours();
+    var massages=document.getElementById("dynamicMessage");
+    massages.setAttribute("class","massage")
+    
+    var dropDown1 = document.getElementById("wakeUpTime");
+    var dropDown2 = document.getElementById("lunchTime");
+    var dropDown3 = document.getElementById("napTime");
 
+    var  invalue1=dropDown1.value
+    var   invalue2=dropDown2.value
+    var   invalue3=dropDown3.value
+
+    var value11 = dropDown1.options[dropDown1.selectedIndex].text;
+    var value22 = dropDown2.options[dropDown2.selectedIndex].text;
+    var value33 = dropDown3.options[dropDown3.selectedIndex].text;
+
+   if (invalue1>=1&&invalue2>=1&&invalue3>=1) { 
+     
+        massages.innerText="Wakeup time : "+value11+"\n"+"Lunch time : "+value22+"\n"+"Sleeping time : "+value33;
+
+     
+    }
+    else{
+          
+        massages.innerText="Please select all time fields ";
+    }
+  
+
+  
+}
 
   function dynamicTimeSet() {
-    let newDate = new Date();
-    let hour = newDate.getHours();
-    // let minute = newDate.getMinutes();
+    var newDate = new Date();
+    var hour = newDate.getHours();
 
-    const dropDown1 = document.getElementById("wakeUpTime");
-    const dropDown2 = document.getElementById("lunchTime");
-    const dropDown3 = document.getElementById("napTime");
+    var massages=document.getElementById("dynamicMessage");
+    var dropDown1 = document.getElementById("wakeUpTime");
+    var dropDown2 = document.getElementById("lunchTime");
+    var dropDown3 = document.getElementById("napTime");
+
+    var value1 = dropDown1.value;
+    var value2 = dropDown2.value;
+    var value3 = dropDown3.value;
+
+   
+    var value11 = dropDown1.options[dropDown1.selectedIndex].text;
+    var value22 = dropDown2.options[dropDown2.selectedIndex].text;
+    var value33 = dropDown3.options[dropDown3.selectedIndex].text;
+
+    const img=document.getElementById("dynamic-text")
     const image = document.getElementById("myImageId");
+  
 
-    const value1 = dropDown1.options[dropDown1.selectedIndex].value;
-    const value2 = dropDown2.options[dropDown2.selectedIndex].value;
-    const value3 = dropDown3.options[dropDown3.selectedIndex].value;
 
-    if (value1 != hour && value2 != hour && value3 != hour) {
-        image.setAttribute("src", "image/d.jpg");
-    }
+        if (value1 != hour && value2 != hour && value3 != hour) {
+        image.setAttribute("src", "./image/default.jpg");
+       
+        }
         if (value1 >= hour && value1 < hour + 1) { 
-            image.setAttribute("src", "./image/wakeup.png");
+            image.setAttribute("src", "./image/wake_up.svg");
+            massages.innerText="Wake time"+" "+value11;
+            img.innerText="Wake up Time"
         }
         if (value2 >= hour && value2 < hour + 1) { 
              image.setAttribute("src", "./image/lunch.jpg");
+             massages.innerText="Lunch time"+" "+value22;
+             img.innerText="Lunch Time"
         }
         if (value3 >= hour && value3 < hour + 1) { 
              image.setAttribute("src", "./image/gn.jpg");
+             massages.innerText="Sleeping time"+ " "+value33;
+             img.innerText="Bed Time"
         }
+             
+        MakeDiv() 
 
   }
-  dynamicTimeSet()
