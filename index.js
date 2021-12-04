@@ -94,6 +94,8 @@ function MakeDiv() {
 
         if (value1 != hour && value2 != hour && value3 != hour) {
         image.setAttribute("src", "./image/default.jpg");
+        img.innerText="WELCOME"
+
        
         }
         if (value1 >= hour && value1 < hour + 1) { 
