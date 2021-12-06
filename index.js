@@ -54,15 +54,11 @@ function MakeDiv() {
     var value22 = dropDown2.options[dropDown2.selectedIndex].text;
     var value33 = dropDown3.options[dropDown3.selectedIndex].text;
 
-   if (invalue1>=1&&invalue2>=1&&invalue3>=1) { 
+   if (invalue1>=0&&invalue2>=0&&invalue3>=0) { 
      
         massages.innerText="Wakeup time : "+value11+"\n"+"Lunch time : "+value22+"\n"+"Sleeping time : "+value33;
 
      
-    }
-    else{
-          
-        massages.innerText="Please select all time fields ";
     }
   
 
@@ -98,21 +94,23 @@ function MakeDiv() {
 
        
         }
+        if (value3 >= hour && value3 < hour + 1) { 
+            image.setAttribute("src", "./image/gn.jpg");
+            massages.innerText="Sleeping time"+ " "+value33;
+            img.innerText="Bed Time"
+       }
+       if (value2 >= hour && value2 < hour + 1) { 
+        image.setAttribute("src", "./image/lunch.jpg");
+        massages.innerText="Lunch time"+" "+value22;
+        img.innerText="Lunch Time"
+      }
+      
         if (value1 >= hour && value1 < hour + 1) { 
             image.setAttribute("src", "./image/wake_up.svg");
             massages.innerText="Wake time"+" "+value11;
             img.innerText="Wake up Time"
         }
-        if (value2 >= hour && value2 < hour + 1) { 
-             image.setAttribute("src", "./image/lunch.jpg");
-             massages.innerText="Lunch time"+" "+value22;
-             img.innerText="Lunch Time"
-        }
-        if (value3 >= hour && value3 < hour + 1) { 
-             image.setAttribute("src", "./image/gn.jpg");
-             massages.innerText="Sleeping time"+ " "+value33;
-             img.innerText="Bed Time"
-        }
+      
              
         MakeDiv() 
 
